@@ -69,7 +69,7 @@ resource "azurerm_dev_test_schedule" "compute2" {
   }
 
   time_zone_id = "Eastern Standard Time"
-  task_type    = "LabVmsShutdownTask"
+  task_type    = "LabVmsShutdown"
 
   notification_settings {
   }
