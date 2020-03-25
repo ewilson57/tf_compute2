@@ -46,7 +46,7 @@ resource "azurerm_virtual_machine" "compute2" {
   }
 
   boot_diagnostics {
-    enabled = false
+    enabled     = false
     storage_uri = ""
 
   }
