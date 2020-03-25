@@ -1,9 +1,3 @@
-locals {
-  virtual_machine_name = "${var.prefix}-vm"
-  admin_username       = "testadmin"
-  admin_password       = "Password1234!"
-}
-
 resource "azurerm_resource_group" "compute" {
   name     = "${var.prefix}-rg"
   location = var.location
@@ -32,7 +26,7 @@ resource "azurerm_network_security_group" "compute" {
       "22",
       "80"
     ]
-    source_address_prefix      = "192.180.173.26/32"
+    source_address_prefix      = var.router_wan_ip
     destination_address_prefix = "*"
   }
 
