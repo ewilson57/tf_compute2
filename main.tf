@@ -44,6 +44,12 @@ resource "azurerm_virtual_machine" "compute2" {
       key_data = var.ssh_key
     }
   }
+
+  boot_diagnostics {
+    enabled = false
+    storage_uri = ""
+
+  }
 }
 
 resource "azurerm_dev_test_lab" "compute2" {
@@ -59,7 +65,7 @@ resource "azurerm_dev_test_schedule" "compute2" {
   lab_name            = azurerm_dev_test_lab.compute2.name
 
   daily_recurrence {
-    time      = "2300"
+    time = "2300"
   }
 
   time_zone_id = "Eastern Standard Time"
