@@ -51,26 +51,3 @@ resource "azurerm_virtual_machine" "compute2" {
 
   }
 }
-
-resource "azurerm_dev_test_lab" "compute2" {
-  name                = "shutdown-computevm-${local.virtual_machine_name}"
-  location            = azurerm_resource_group.compute2.location
-  resource_group_name = azurerm_resource_group.compute2.name
-}
-
-resource "azurerm_dev_test_schedule" "compute2" {
-  name                = "${local.virtual_machine_name}-AutoStop"
-  location            = azurerm_resource_group.compute2.location
-  resource_group_name = azurerm_resource_group.compute2.name
-  lab_name            = azurerm_dev_test_lab.compute2.name
-
-  daily_recurrence {
-    time = "2300"
-  }
-
-  time_zone_id = "Eastern Standard Time"
-  task_type    = "LabVmsShutdown"
-
-  notification_settings {
-  }
-}
