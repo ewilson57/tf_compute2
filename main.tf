@@ -7,6 +7,11 @@ locals {
   virtual_machine_name = "${var.prefix}-vm"
 }
 
+data "azurerm_image" "custom" {
+  name                = "${var.custom_image_name}"
+  resource_group_name = "${var.custom_image_resource_group_name}"
+}
+
 resource "azurerm_virtual_machine" "compute2" {
   name                = local.virtual_machine_name
   location            = azurerm_resource_group.compute2.location
@@ -49,6 +54,5 @@ resource "azurerm_virtual_machine" "compute2" {
   boot_diagnostics {
     enabled     = false
     storage_uri = ""
-
   }
 }
