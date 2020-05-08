@@ -51,7 +51,7 @@ resource "azurerm_public_ip" "compute2" {
   name                = "${var.prefix}-publicip"
   resource_group_name = azurerm_resource_group.compute2.name
   location            = azurerm_resource_group.compute2.location
-  allocation_method   = "Dyanmic"
+  allocation_method   = "Dynamic"
 }
 
 resource "azurerm_network_interface" "compute2" {
